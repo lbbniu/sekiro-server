@@ -1,0 +1,25 @@
+version: "2"
+services:
+    nginx:
+        container_name: nginx
+        image: lbbniu/nginx
+        restart: always
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - nginx.conf:/data/nginx/nginx.conf
+            - logs:/data/nginx/logs
+        working_dir: /data/www/sina
+        #entrypoint: ["nginx"]
+        links:
+            - sekiro:sekiro
+    sekiro:
+        container_name: sekiro
+        image: lbbniu/sekiro
+        restart: always
+        expose:
+            - "5601"
+            - "5602"
+        ports:
+            - "5600:5600"
