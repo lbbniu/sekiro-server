@@ -9,7 +9,7 @@ services:
             - "443:443"
         volumes:
             - ./nginx.conf:/data/nginx/nginx.conf
-            - ./logs:/data/nginx/logs
+            - ./logs:/lnmp/nginx/logs
         working_dir: /data/www/sina
         #entrypoint: ["nginx"]
         links:
